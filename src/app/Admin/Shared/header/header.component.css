@@ -1,0 +1,57 @@
+
+.isha{
+    background-color:black;
+
+    padding-top:10px;
+    padding-bottom:10px;
+}
+.logo{
+    float:left;
+    height:40px;
+    width:50px;
+    
+}
+.btn btn-outline-success {
+    margin-left:20px;
+}
+.container{
+    margin-left: 250px;
+}
+.class1{
+    margin-left:40px;  
+}
+.class2{
+    margin-left:40px;  
+}
+.class3{
+    margin-left:40px;  
+}
+.class4{
+  margin-left:40px;  
+}
+.storage1{
+    color:white;
+    margin-left: 1000px;
+        
+}
+.class5{
+    margin-left: 150px;
+}
+.fa-user-circle{
+    font-size:80px;
+}
+#AwesomeFont {
+    cursor: pointer;
+    color:yellow;
+}
+.storage3{
+    display: none;
+}
+
+    
+.fa-user-circle:hover + select{
+    display: block;
+}
+    
+
+

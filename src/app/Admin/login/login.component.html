@@ -1,0 +1,52 @@
+
+<div class="bg">
+  <img src="./assets/images/image3.jpg" alt="Pic" class="pic">
+
+  <div class="login-box">
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+      <h1>Login</h1>
+      <div class="imgcontainer">
+        <img src="./assets/images/image5.png" alt="Logo" class="logo">
+      </div>
+      <div class="container">
+        <div class="form-group">
+          <i class="fa fa-envelope icon"></i>
+          <input class="input-field" type="text" autocomplete="none" placeholder="Email" name="email" #email="ngModel"
+            [ngClass]="{ 'is-invalid': submitted && email.errors?.required}" [(ngModel)]="loginmodel.uemail" required
+            email />
+          <div class="design" *ngIf="submitted">
+            <div class="design2" *ngIf="email.errors?.required">Email is required ***</div>
+            <div class="design2" *ngIf="email.errors?.email">Email must be valid***</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <i class="fa fa-key icon"></i>
+          <input class="input-field" type="password" autocomplete="none" placeholder="Password" name="password"
+            #password="ngModel" [ngClass]="{ 'is-invalid': submitted && password.errors?.required}"
+            [(ngModel)]="loginmodel.upassword" minlength="8" maxlength="10" required />
+          <div class="design" *ngIf="submitted">
+            <div class="design1" *ngIf="password.errors?.required">Password is required ***</div>
+            <div class="design1" *ngIf="password.errors?.minlength">Password must contain 8 characters ***</div>
+            <div class="design1" *ngIf="password.errors?.maxlength">Password can not contain more than 10 characters ***
+            </div>
+          </div>
+        </div>
+
+        
+        <button type="submit" class="btn">Login
+          <div [hidden]="!visible">
+            <div class="loader"></div>
+            </div>
+        </button>
+      
+          
+        
+        
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
