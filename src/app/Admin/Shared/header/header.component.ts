@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
        this.val= JSON.parse(this.res);
        this.user= "data:image/png;base64," + this.val.userImage;
   }
-  
+
   log(){
     localStorage.removeItem('userInfo');
     this.router.navigate([""]);
