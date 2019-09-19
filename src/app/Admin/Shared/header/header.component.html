@@ -1,25 +1,48 @@
 <div class="isha">
         <div class="imgcontainer">
-        <img src="./assets/images/image7.jpg" alt="Logo" class="logo">
+                <img src="./assets/images/image7.jpg" alt="Logo" class="logo">
         </div>
- <div class="container"> 
-        <button class="btn btn-outline-success class1" type="button"><i class="fa fa-fw fa-home"></i>Home</button>
-        <button class="btn btn-outline-success class2" type="button"><i class="fa fa-fw fa-envelope"></i>Contact</button>
-        <button class="btn btn-outline-success class3" type="button"><i class="fa fa-fw fa-user"></i>Categories</button>
-        <button class="btn btn-outline-success class4" type="button"><i class="fa fa-fw fa-user"></i>Products</button>
-</div>
-<div class="storage1">
- <h3 class="storage2">{{val.firstName+" "+ val.lastName}}</h3>
- 
- <span id='AwesomeFont'><i class="fa fa-fw fa-user-circle class5"></i></span>
- <div>
-         <button>logout</button>
- </div>
-        
- 
- </div>
-  
-</div>
+        <div class="container">
+                <div class="row">
+                        <div class="col-md-8">
+                                <button class="btn btn-outline-success class1" type="button"><i
+                                                class="fa fa-fw fa-home"></i>Home</button>
+                                <button class="btn btn-outline-success class2" type="button"><i
+                                                class="fa fa-fw fa-envelope"></i>Contact</button>
+                                <button class="btn btn-outline-success class3" type="button"><i
+                                                class="fa fa-fw fa-user"></i>Categories</button>
+                                <button class="btn btn-outline-success class4" type="button"><i
+                                                class="fa fa-fw fa-user"></i>Products</button>
 
-  
-  
+                        </div>
+                        <div class="col-md-4">
+                                <div class="storage1">
+                                        <div class="row">
+                                                <div class="col-md-6">
+                                                        <p class="storage2">{{val.firstName+" "+ val.lastName}}</p>
+                                                        <div class="clearfix"></div>
+                                                        <button class="btn1" (click)="log()">logout</button>
+                                                </div>
+                                                <div class="col-md-6">
+                                                        <ng-container *ngIf="!val.userImage">
+                                                                <span id='AwesomeFont'><i
+                                                                                class="fa fa-fw fa-user-circle"></i></span>
+                                                        </ng-container>
+                                                        <ng-container *ngIf="val.userImage">
+                                                                <img [src]="user" />
+                                                        </ng-container>
+
+                                                </div>
+                                        </div>
+
+
+
+                                </div>
+                        </div>
+                </div>
+
+
+        </div>
+
+
+</div>

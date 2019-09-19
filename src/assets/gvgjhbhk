@@ -128,3 +128,25 @@ div class="footer3">
     font-size:80px;
     margin-bottom: 300px;
 }
+
+
+
+
+
+
+
+.storage1{
+    color:white;
+    margin-left: 1000px;
+        
+}
+.class5{
+    margin-left: 150px;
+}
+.fa-user-circle{
+    font-size:80px;
+}
+#AwesomeFont {
+    cursor: pointer;
+    color:yellow;
+}

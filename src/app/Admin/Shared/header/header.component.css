@@ -6,7 +6,7 @@
     padding-bottom:10px;
 }
 .logo{
-    float:left;
+    float:left;                                    
     height:40px;
     width:50px;
     
@@ -15,7 +15,8 @@
     margin-left:20px;
 }
 .container{
-    margin-left: 250px;
+    margin-left: 150px;
+    max-width: 1140px;
 }
 .class1{
     margin-left:40px;  
@@ -29,29 +30,27 @@
 .class4{
   margin-left:40px;  
 }
+
 .storage1{
+    border:2px solid red;
+    float: right;
+}
+.storage2{
     color:white;
-    margin-left: 1000px;
-        
-}
-.class5{
-    margin-left: 150px;
-}
-.fa-user-circle{
-    font-size:80px;
-}
-#AwesomeFont {
-    cursor: pointer;
-    color:yellow;
-}
-.storage3{
-    display: none;
+    display: inline-block;
+    margin: 0;;
 }
 
-    
-.fa-user-circle:hover + select{
-    display: block;
+.fa-user-circle{
+    font-size:40px;
 }
-    
+#AwesomeFont {
+    color:yellow;
+   
+}
+img{
+    width:30px;
+    height:20px;
+}
 
 

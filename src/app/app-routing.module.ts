@@ -1,28 +1,49 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './Admin/login/login.component';
-import { HeaderComponent} from './Admin/shared/header/header.component';
+import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './Admin/dashboard/dashboard.component';
-import { FooterComponent} from './Admin/shared/footer/footer.component';
+import { CategoryComponent } from './Admin/category/category.component';
+import { ProductComponent } from './Admin/product/product.component';
+import {
+  AuthGuardService as AuthGuard
+} from './shared/services/auth-guard.service';
+import { HomeComponent } from './home/home.component';
+import { AdminComponent } from './Admin/admin.component';
+
+
 
 const routes: Routes = [
-
   {
-    path: '',
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuard],
+    children:[
+      {
+        path: 'dashboard',
+        component: DashboardComponent, // dashboardcontent
+      },
+      {
+        path: 'category',
+        component: CategoryComponent
+      },
+      {
+        path: 'product',
+        component: ProductComponent
+      },
+    ]
+  },
+  {
+    path: 'login',
     component: LoginComponent
   },
   {
-    path: 'header',
-    component: HeaderComponent
+    path: '',
+    component: HomeComponent
   },
+ 
   {
-    path: 'dashboard',
-    component: DashboardComponent
- },
-{
-  path:'footer',
-  component:FooterComponent
-}
+    path: '', redirectTo: 'login', pathMatch: 'full'
+  },
 ];
 
 @NgModule({

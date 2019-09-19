@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,15 +13,21 @@ export class HeaderComponent implements OnInit {
 
    res:any;
    val:any;
-  constructor(private http: HttpClient) {
+   user:any;
+  constructor(private http: HttpClient,private router:Router) {
    
    }
 
   ngOnInit() {
+    
        this.res= localStorage.getItem('userInfo');
-      this.val= JSON.parse(this.res);
-      
+       this.val= JSON.parse(this.res);
+       this.user= "data:image/png;base64," + this.val.userImage;
+  }
   
+  log(){
+    localStorage.removeItem('userInfo');
+    this.router.navigate([""]);
   }
   
 }
