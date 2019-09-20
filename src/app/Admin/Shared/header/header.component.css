@@ -7,8 +7,8 @@
 }
 .logo{
     float:left;                                    
-    height:40px;
-    width:50px;
+    height:80px;
+    width:90px;
     
 }
 .btn btn-outline-success {
@@ -32,7 +32,7 @@
 }
 
 .storage1{
-    border:2px solid red;
+
     float: right;
 }
 .storage2{
@@ -51,6 +51,10 @@
 img{
     width:30px;
     height:20px;
+}
+h1{
+    color:yellow;
+    font-family: cursive;
 }
 
 

@@ -18,6 +18,9 @@ import { AuthService } from './shared/services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './Admin/admin.component';
 import {DashboardService} from './Admin/dashboard/dashboard.service';
+import { ProductService } from './Admin/product/product.service';
+import { CategoryService } from './Admin/category/category.service';
+import { FormComponent } from './Admin/form/form.component';
 
 
 @NgModule({
@@ -31,6 +34,7 @@ import {DashboardService} from './Admin/dashboard/dashboard.service';
     DashboardComponent,
     CategoryComponent,
     ProductComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,8 @@ import {DashboardService} from './Admin/dashboard/dashboard.service';
     CommonModule,
     HttpClientModule
   ],
-  providers: [LoginService,DashboardService,ApiService,AuthGuardService,AuthService],
+  providers: [LoginService,DashboardService,ApiService,AuthGuardService
+    ,AuthService,CategoryService,ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

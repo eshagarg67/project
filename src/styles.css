@@ -11,3 +11,65 @@ body{
     background-color: #fff;
     height:700px;
 }
+
+.no-padding{
+    padding:0;
+}
+
+.no-margin{
+    margin:0;
+}
+
+.admin-content{
+  width: 100%;
+}
+
+.card-header{
+    padding: 0.35rem 1.25rem;
+}
+
+.card-header h2{
+  font-size: 24px;
+}
+
+
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.card{
+    margin-top: 25px;
+}
+
+.side{
+    max-width: 14%;
+}
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 175px;
+    background-color:white;
+    position: fixed;
+    height: 100%;
+    border-right: 1px solid #eee;
+    overflow: auto;
+  }
+  .sbtn1{
+    margin-top:30px;
+    
+  }
+
+  .sidebar li{
+    padding: 20px;
+    border-bottom: 1px solid lightgrey;
+    font-size: 20px;
+  }
+
+  .sidebar li a{
+      text-decoration: none;
+  }
+  
+  .right-sec{
+      padding-left:0;
+  }

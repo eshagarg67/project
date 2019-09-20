@@ -9,7 +9,7 @@ import {
 } from './shared/services/auth-guard.service';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './Admin/admin.component';
-
+import {FormComponent} from './Admin/form/form.component';
 
 
 const routes: Routes = [
@@ -23,11 +23,11 @@ const routes: Routes = [
         component: DashboardComponent, // dashboardcontent
       },
       {
-        path: 'category',
+        path: 'categories',
         component: CategoryComponent
       },
       {
-        path: 'product',
+        path: 'products',
         component: ProductComponent
       },
     ]
@@ -44,6 +44,10 @@ const routes: Routes = [
   {
     path: '', redirectTo: 'login', pathMatch: 'full'
   },
+  {
+    path: 'form',
+    component: FormComponent
+  }
 ];
 
 @NgModule({
