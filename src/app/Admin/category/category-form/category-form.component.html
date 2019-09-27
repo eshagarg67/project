@@ -1,0 +1,56 @@
+<div class="card">
+    <div class="card-header">
+            <h4>Add Categories</h4>
+    </div>
+    <div class="form3">
+            <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+                    <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">CategoryName</label>
+                            <div class="col-sm-4">
+                                    <input type="text" class="form-control" placeholder="Name"
+                                            autocomplete="off" name="categoryName" #categoryName="ngModel"
+                                            [ngClass]="{ 'is-invalid': submitted && categoryName.errors?.required}"
+                                            [(ngModel)]="categoryformmodel.productName" required />
+                                    <div class="design" *ngIf="submitted">
+                                            <div class="design" *ngIf="categoryName.errors?.required">Name is
+                                                    required ***</div>
+                                    </div>
+                            </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Description</label>
+                            <div class="col-sm-4">
+                                    <input type="text" class="form-control"
+                                            placeholder="Description" name="categoryDescription"
+                                            #productDescription="ngModel"
+                                            [ngClass]="{ 'is-invalid': submitted && categoryDescription.errors?.required}"
+                                            [(ngModel)]="categoryformmodel.categoryDescription" required />
+                                    <div *ngIf="submitted">
+                                            <div class="design" *ngIf="categoryDescription.errors?.required">
+                                                    Description is
+                                                    required ***
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+
+                    
+                    <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Image</label>
+                            <div class="col-sm-4">
+                                    <input type="file" class="form-control" (change)="onFileChanged($event)"
+                                            name="Image" [ngClass]="{ 'is-invalid':file===undefined && submitted }" />
+
+                                    <div class="design" *ngIf="file===undefined && submitted">Image is
+                                            required***</div>
+
+                            </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+
+            </form>
+    </div>
+</div>

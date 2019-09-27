@@ -8,5 +8,11 @@ i{
 .tr{
     background-color: rgb(162, 169, 175);
 }
+.btn-danger{
+    margin-right: 10px;
+}
 
+th:last-child{
+    width:20%;
+}
 

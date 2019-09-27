@@ -17,14 +17,12 @@ export class CategoryService {
 
          return this.apiService.sendRequest("/api/category/listing",'GET', null, null);
      }
-     adduser(data) :Observable<any>{
-        const query: any[]=[];
-
-        query.push({key: 'username', value: data.email});
-        query.push({key: 'password', value: data.password});
-
-         return this.apiService.sendRequest("/api/user/login",'GET', null, query);
-     }
+     
+     delete(id: number): Observable<any> {
+        const query: any[] = [];        
+        query.push({ key: 'id', value: id });
+        return this.apiService.sendRequest("/api/product/delete", 'DELETE', null, query);
+    }
  
  
 }

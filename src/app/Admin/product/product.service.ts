@@ -9,24 +9,39 @@ export class ProductService {
 
     domain = '';
     constructor(private apiService: ApiService) {
-      
+
     }
 
-    productuser() :Observable<any>{
-    
+    productuser(): Observable<any> {
 
-         return this.apiService.sendRequest("/api/product/listing",'GET', null, null);
-     }
-     adduser(data) :Observable<any>{
-        const query: any[]=[];
 
-        query.push({key: 'username', value: data.email});
-        query.push({key: 'password', value: data.password});
+        return this.apiService.sendRequest("/api/product/listing", 'GET', null, null);
+    }
+    //adddata(detail:any) :Observable<any>{
 
-         return this.apiService.sendRequest("/api/user/login",'GET', null, query);
-     }
- 
- 
+    // return this.apiService.sendRequest("/api/product/insert",'POST', null, null);
+    //}
+
+    delete(id: number): Observable<any> {
+        const query: any[] = [];        
+        query.push({ key: 'id', value: id });
+        return this.apiService.sendRequest("/api/product/delete", 'DELETE', null, query);
+    }
+
+    categoryuser(): Observable<any> {
+
+
+        return this.apiService.sendRequest("/api/category/listing", 'GET', null, null);
+    }
+
+    getedit(id:number): Observable<any> {
+
+        const query: any[] = [];        
+        query.push({ key: 'id', value: id });
+        return this.apiService.sendRequest("/api/product/detail/"+id,"GET");
+    }
+
+
 }
 
 
