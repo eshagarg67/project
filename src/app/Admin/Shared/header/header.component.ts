@@ -29,5 +29,7 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('userInfo');
     this.router.navigate([""]);
   }
-  
+  dashboard(){
+    this.router.navigate(["/admin/dashboard"]);
+  }
 }

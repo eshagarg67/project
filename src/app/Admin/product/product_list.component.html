@@ -25,7 +25,7 @@
             <tr *ngFor="let product of list">
                 <td>{{product.productName}}</td>
                 <td>{{product.productDescription}}</td>
-                <td>{{product.createdDate}}</td>
+                <td>{{product.createdDate|date}}</td>
                 <td>{{product.modelNumber}}</td>
                 <td>
 
@@ -41,7 +41,7 @@
                                     
                         <!-- </div>
                         <div class="col-md-1"> -->
-                            <button  (click)="edit(product.productId);" type="button" class="btn btn-success"><i
+                            <button  (click)="Edit(product.productId);" type="button" class="btn btn-success"><i
                                     class="fa fa-pencil"></i>Edit</button>
                         <!-- </div>
                     </div> -->

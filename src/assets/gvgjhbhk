@@ -150,3 +150,9 @@ div class="footer3">
     cursor: pointer;
     color:yellow;
 }
+/////////
+font-size: 12px;
+    font-style: italic;
+    ///////
+     <img [src]="image" *ngIf="image!==null && image!==''" />
+     *ngIf="productId!==null"

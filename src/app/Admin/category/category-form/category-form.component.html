@@ -1,56 +1,76 @@
 <div class="card">
     <div class="card-header">
-            <h4>Add Categories</h4>
+
+        <ng-container *ngIf="categoryId===-1">
+            <div class="row">
+                <div class="col-md-10">
+                    <h4>Add Category</h4>
+                </div>
+                <div class="col-md-2">
+                    <button (click)="back()" class="btn btn-primary submit2">Back</button>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="categoryId!==-1">
+            <div class="row">
+                <div class="col-md-10">
+                    <h4>Edit Category</h4>
+                </div>
+                <div class="col-md-2">
+                    <button (click)="back()" class="btn btn-primary submit2">Back</button>
+                </div>
+            </div>
+        </ng-container>
     </div>
     <div class="form3">
-            <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
-                    <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">CategoryName</label>
-                            <div class="col-sm-4">
-                                    <input type="text" class="form-control" placeholder="Name"
-                                            autocomplete="off" name="categoryName" #categoryName="ngModel"
-                                            [ngClass]="{ 'is-invalid': submitted && categoryName.errors?.required}"
-                                            [(ngModel)]="categoryformmodel.productName" required />
-                                    <div class="design" *ngIf="submitted">
-                                            <div class="design" *ngIf="categoryName.errors?.required">Name is
-                                                    required ***</div>
-                                    </div>
-                            </div>
+        <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="Enter Name" autocomplete="off" name="categoryName" #categoryName="ngModel" [ngClass]="{ 'is-invalid': submitted && categoryName.errors?.required}" [(ngModel)]="categoryformmodel.categoryName" required
+                    />
+                    <div class="design" *ngIf="submitted">
+                        <div class="design" *ngIf="categoryName.errors?.required">Name is required ***</div>
                     </div>
+                </div>
+            </div>
 
 
-                    <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Description</label>
-                            <div class="col-sm-4">
-                                    <input type="text" class="form-control"
-                                            placeholder="Description" name="categoryDescription"
-                                            #productDescription="ngModel"
-                                            [ngClass]="{ 'is-invalid': submitted && categoryDescription.errors?.required}"
-                                            [(ngModel)]="categoryformmodel.categoryDescription" required />
-                                    <div *ngIf="submitted">
-                                            <div class="design" *ngIf="categoryDescription.errors?.required">
-                                                    Description is
-                                                    required ***
-                                            </div>
-                                    </div>
-                            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Description</label>
+                <div class="col-sm-4">
+                    <input type="text" autocomplete="off" class="form-control" placeholder="Enter Description" name="categoryDescription" #categoryDescription="ngModel" [ngClass]="{ 'is-invalid': submitted && categoryDescription.errors?.required}" [(ngModel)]="categoryformmodel.categoryDescription"
+                        required />
+                    <div *ngIf="submitted">
+                        <div class="design" *ngIf="categoryDescription.errors?.required">
+                            Description is required ***
+                        </div>
                     </div>
+                </div>
+            </div>
 
-                    
-                    <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Image</label>
-                            <div class="col-sm-4">
-                                    <input type="file" class="form-control" (change)="onFileChanged($event)"
-                                            name="Image" [ngClass]="{ 'is-invalid':file===undefined && submitted }" />
 
-                                    <div class="design" *ngIf="file===undefined && submitted">Image is
-                                            required***</div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Image</label>
+                <div class="col-sm-4">
+                    <input type="file" class="form-control" (change)="onFileChanged($event)" name="Image" [ngClass]="{ 'is-invalid':file===undefined && submitted && categoryId===-1}" />
+                    <ng-container *ngIf="categoryId!==-1">
+                        <img [src]="image" *ngIf="image!==null && image!==''" />
+                    </ng-container>
 
-                            </div>
-                    </div>
+                    <ng-container *ngIf="categoryId ===-1 && submitted">
+                        <div class="design" *ngIf="file===undefined">Image is required***
+                        </div>
+                    </ng-container>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
 
-            </form>
+            <div class="row">
+                <button type="submit" class="btn btn-primary submit1">Submit</button>
+
+                <button type="reset" (click)="reset(userForm)" class="btn btn-primary submit3">Reset</button>
+            </div>
+        </form>
     </div>
 </div>

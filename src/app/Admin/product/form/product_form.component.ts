@@ -14,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FormComponent implements OnInit {
   productformmodel: any = {
-    productName: '', productDescription: '', createdBy:-1, productImage:'',
+    productName: '', productDescription: '', createdBy: -1, productImage: '',
     modelNo: '', categoryId: -1, price: 0, isDiscounted: false, quantityInStock: 0, discountPercent: 0
   };
   submitted: any = false;
@@ -25,7 +25,8 @@ export class FormComponent implements OnInit {
   list: any;
   edit: any;
   productId: any;
-  product: any;
+ image ='';
+ //image:any;
 
   constructor(private route: ActivatedRoute, private toastr: ToastrService, private router: Router, private productservice: ProductService) {
 
@@ -34,17 +35,18 @@ export class FormComponent implements OnInit {
   getproductid() {
     this.route.params.subscribe(param => {
       this.productId = parseInt(param['id']);
-      debugger;
       if (this.productId) {
         this.productservice.getedit(this.productId).subscribe(data => {
           console.log(data);
           this.productformmodel = data.body;
-        }
-        )
+          if(this.productformmodel.productImage!=null){
+          this.image = "data:image/png;base64," + this.productformmodel.productImage;
+          }
+        })
       }
     },
       error => {
-        debugger;
+
 
       });
 
@@ -61,7 +63,7 @@ export class FormComponent implements OnInit {
 
   onSubmit(data) {
 
-    if (data.valid) {
+    if (data.valid && this.file!==undefined) {
       this.sendRequest(data.value);
     }
     this.submitted = true;
@@ -76,14 +78,13 @@ export class FormComponent implements OnInit {
   }
 
   sendRequest(formValue) {
-    debugger;
     const uid = this.getUserId();
     if (!this.productId) {
       formValue.createdBy = uid;
     }
     else {
-      formValue.createdBy= this.productformmodel.createdBy;
-      formValue.productId= this.productId;
+      formValue.createdBy = this.productformmodel.createdBy;
+      formValue.productId = this.productId;
       formValue.modifiedBy = uid;
     }
     const formdata = new FormData();
@@ -96,18 +97,23 @@ export class FormComponent implements OnInit {
     const objXhr = new XMLHttpRequest();
     if (!this.productId) {
       objXhr.open('POST', "/api/product/insert");
+      this.toastr.success('Added successfully', 'Add!')
     }
     else {
       objXhr.open('PUT', "/api/product/update");
+      this.toastr.success('Updated successfully', 'Update!')
     }
+
     objXhr.onreadystatechange = function (aEvt) {
       if (objXhr.readyState === 4) {
-        debugger;
         if (objXhr.status === 200) {
           const response = JSON.parse(objXhr.response);
           console.log(response);
           if (response.status === 1) {
-            scope.router.navigate(["/admin/products"]);
+            setTimeout(() => {
+              scope.router.navigate(["/admin/products"]);
+            }, 2000);
+           
           } else {
             scope.toastr.warning('submitted failed', 'ohh!')
           }
@@ -140,10 +146,14 @@ export class FormComponent implements OnInit {
     this.router.navigate(["admin/products"])
   }
 
-  reset() {
-    this.router.navigate(["admin/categories"])
+  reset(userForm) {
+    if(!this.productId){
+      userForm.reset();
+    }
+    else{
+      this.getproductid();
+    }
+    this.submitted = false;
   }
-
-
 
 }

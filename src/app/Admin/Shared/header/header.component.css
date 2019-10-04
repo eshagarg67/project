@@ -1,60 +1,65 @@
-
-.isha{
-    background-color:black;
-
-    padding-top:10px;
-    padding-bottom:10px;
+.isha {
+    background-color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
-.logo{
-    float:left;                                    
-    height:80px;
-    width:90px;
-    
+
+.admin-logo {
+    float: left;
+    height: 80px;
+    width: 90px;
 }
+
 .btn btn-outline-success {
-    margin-left:20px;
+    margin-left: 20px;
 }
-.container{
+
+.container {
     margin-left: 150px;
     max-width: 1140px;
 }
-.class1{
-    margin-left:40px;  
-}
-.class2{
-    margin-left:40px;  
-}
-.class3{
-    margin-left:40px;  
-}
-.class4{
-  margin-left:40px;  
+
+.class1 {
+    margin-left: 40px;
 }
 
-.storage1{
+.class2 {
+    margin-left: 40px;
+}
 
+.class3 {
+    margin-left: 40px;
+}
+
+.class4 {
+    margin-left: 40px;
+}
+
+.storage1 {
     float: right;
 }
-.storage2{
-    color:white;
+
+.storage2 {
+    color: white;
     display: inline-block;
-    margin: 0;;
+    margin: 0;
+    ;
 }
 
-.fa-user-circle{
-    font-size:40px;
+.fa-user-circle {
+    font-size: 40px;
 }
+
 #AwesomeFont {
-    color:yellow;
-   
+    color: yellow;
 }
-img{
-    width:30px;
-    height:20px;
+
+img {
+    width: 30px;
+    height: 20px;
 }
-h1{
-    color:yellow;
+
+h1 {
+    color: yellow;
     font-family: cursive;
 }
-
-

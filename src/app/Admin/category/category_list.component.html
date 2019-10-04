@@ -1,55 +1,57 @@
 <div class="card">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-md-10">
-                    <h1>Categories</h1>
-                </div>
-                <div class="col-md-2 ">
-                    <button (click)="add()" type="button" class="btn btn-info pull-right"><i
-                            class="fa fa-plus"></i>Add</button>
-                </div>
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-10">
+                <h1>Categories</h1>
+            </div>
+            <div class="col-md-2 ">
+                <button (click)="add()" type="button" class="btn btn-info pull-right"><i
+                        class="fa fa-plus"></i>Add</button>
             </div>
         </div>
-        <div class="card-body">
-            <table class="table table-bordered">
-    
-                <tr class="tr">
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>CreatedDate</th>
-                    <th>IsActive</th>
-                    <th>Actions</th>
-                </tr>
-    
-                <tr *ngFor="let category of list">
-                    <td>{{category.categoryName}}</td>
-                    <td>{{category.categoryDescription}}</td>
-                    <td>{{category.createdDate}}</td>
-                    <td>
-    
-                        <span *ngIf="category.isActive">&#10004; </span>
-                        <span *ngIf="!category.isActive">&#10008; </span>
-                    </td>
-                    <td>
-                        <!-- <div class="row">
-                            <div class="col-md-1"> -->
-                                <button  type="button" class="btn btn-danger"><i
-                                        class="fa fa-trash"  data-toggle="modal" data-target="#exModal"></i>Delete</button>
-                            <!-- </div>
-                            <div class="col-md-1"> -->
-                                <button (click)="update()" type="button" class="btn btn-success"><i
-                                        class="fa fa-pencil"></i>Edit</button>
-                            <!-- </div>
-                        </div> -->
-                    </td>
-                </tr>
-    
-            </table>
-        </div>
-    
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered">
+
+            <tr class="tr">
+                <th>Name</th>
+                <th>Description</th>
+                <th>CreatedDate</th>
+                <th>IsActive</th>
+                <th>Actions</th>
+            </tr>
+
+            <tr *ngFor="let category of list">
+                <td>{{category.categoryName}}</td>
+                <td>{{category.categoryDescription}}</td>
+                <td>{{category.createdDate|date}}</td>
+                <td>
+
+                    <span *ngIf="category.isActive">&#10004; </span>
+                    <span *ngIf="!category.isActive">&#10008; </span>
+                </td>
+                <td>
+                    <!-- <div class="row">
+                        <div class="col-md-1"> -->
+                            <button  type="button" class="btn btn-danger" data-toggle="modal" data-target="#exModal"  
+                            (click)="selectedcategoryId=category.categoryId"><i
+                                    class="fa fa-trash"></i>Delete</button>
+                                    
+                        <!-- </div>
+                        <div class="col-md-1"> -->
+                            <button  (click)="Edit(category.categoryId);" type="button" class="btn btn-success"><i
+                                    class="fa fa-pencil"></i>Edit</button>
+                        <!-- </div>
+                    </div> -->
+                </td>
+            </tr>
+
+        </table>
     </div>
 
-    <!-- Modal -->
+</div>
+
+<!-- Modal -->
 <div class="modal fade" id="exModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -64,7 +66,7 @@
         </div>
         <div class="modal-footer">
           <button type="button"   class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" (click)="getdelete(category.categoryId)"  class="btn btn-primary" data-dismiss="modal">OK</button>
+          <button type="button" (click)="getdelete(selectedcategoryId);" class="btn btn-primary" data-dismiss="modal">OK</button>
         </div>
       </div>
     </div>

@@ -1,19 +1,35 @@
 <div class="card">
         <div class="card-header">
-                <!-- <ng-container *ngIf="add()"> -->
-                <h4>Add Products</h4>
-                <!-- </ng-container> -->
-                <!-- <ng-container *ngIf="edit()">
-                <h4>Edit Products</h4>
-                </ng-container>-->
+
+                <ng-container *ngIf="!productId">
+                        <div class="row">
+                                <div class="col-md-10">
+                                        <h4>Add Product</h4>
+                                </div>
+                                <div class="col-md-2">
+                                        <button (click)="back()" class="btn btn-primary submit2">Back</button>
+                                </div>
+                        </div>
+                </ng-container>
+                <ng-container *ngIf="productId">
+                        <div class="row">
+                                <div class="col-md-10">
+                                        <h4>Edit Product</h4>
+                                </div>
+                                <div class="col-md-2">
+                                        <button (click)="back()" class="btn btn-primary submit2">Back</button>
+                                </div>
+                        </div>
+                </ng-container>
         </div>
         <div class="form3">
                 <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
                         <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">ProductName</label>
+                                <label class="col-sm-2 col-form-label">Name</label>
                                 <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="productName" placeholder="Name"
-                                                autocomplete="off" name="productName" #productName="ngModel"
+                                        <input type="text" class="form-control" id="productName"
+                                                placeholder="Enter Name" autocomplete="off" name="productName"
+                                                #productName="ngModel"
                                                 [ngClass]="{ 'is-invalid': submitted && productName.errors?.required}"
                                                 [(ngModel)]="productformmodel.productName" required />
                                         <div class="design" *ngIf="submitted">
@@ -27,8 +43,8 @@
                         <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Description</label>
                                 <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="productDescription"
-                                                placeholder="Description" name="productDescription"
+                                        <input type="text" autocomplete="off" class="form-control" id="productDescription"
+                                                placeholder="Enter Description" name="productDescription"
                                                 #productDescription="ngModel"
                                                 [ngClass]="{ 'is-invalid': submitted && productDescription.errors?.required}"
                                                 [(ngModel)]="productformmodel.productDescription" required />
@@ -44,8 +60,8 @@
                         <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Model No</label>
                                 <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="modelNumber" placeholder="Model_no"
-                                                name="modelNumber" #modelNumber="ngModel"
+                                        <input type="text" autocomplete="off" class="form-control" id="modelNumber"
+                                                placeholder=" Enter Model_no" name="modelNumber" #modelNumber="ngModel"
                                                 [ngClass]="{ 'is-invalid': submitted && modelNumber.errors?.required}"
                                                 [(ngModel)]="productformmodel.modelNumber" required />
                                         <div *ngIf="submitted">
@@ -55,7 +71,7 @@
                                         </div>
                                 </div>
                         </div>
-<!-- 
+                        <!-- 
                         <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Created Date</label>
                                 <div class="col-sm-4">
@@ -113,21 +129,22 @@
                                 </div>
                         </div>
 
-                       <div class="form-group row"> 
+                        <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Is Discounted </label>
                                 <div class="col-sm-4">
                                         <label class="checkbox-inline">
-                                                <input type="checkbox" name="isDiscounted" #isDiscounted="ngModel" [(ngModel)]="productformmodel.isDiscounted" value="Yes"
+                                                <input type="checkbox" name="isDiscounted" #isDiscounted="ngModel"
+                                                        [(ngModel)]="productformmodel.isDiscounted" value="Yes"
                                                         (click)="validateCheckbox($event)" />
                                         </label>
 
                                 </div>
                         </div>
 
-                           <div class="form-group row" *ngIf="productformmodel.isDiscounted">
+                        <div class="form-group row" *ngIf="productformmodel.isDiscounted">
                                 <label class="col-sm-2 col-form-label">Discount %</label>
                                 <div class="col-sm-4">
-                                        <input type="text" class="form-control"  placeholder="Discount Percentage"
+                                        <input type="text" class="form-control" placeholder="Discount Percentage"
                                                 name="discountPercent" #discountPercent="ngModel"
                                                 [ngClass]="{ 'is-invalid':submitted  && discountPercent.errors?.required}"
                                                 [(ngModel)]="productformmodel.discountPercent" required />
@@ -158,23 +175,26 @@
                                 </div>
                         </div>
 
-                     
+
                         <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Image</label>
                                 <div class="col-sm-4">
                                         <input type="file" class="form-control" (change)="onFileChanged($event)"
-                                                name="Image" [ngClass]="{ 'is-invalid':file===undefined && submitted }" />
-
-                                        <div class="design" *ngIf="file===undefined && submitted">Image is
-                                                required***</div>
+                                                name="Image"
+                                                [ngClass]="{ 'is-invalid':file===undefined && submitted }" />
+                                        <ng-container  *ngIf="productId!==null">
+                                                <img [src]="image" *ngIf="image!==null && image!==''" />
+                                        </ng-container>
+                                        <div class="design" *ngIf="file===undefined && submitted ">Image is 
+                                                required***</div>   
 
                                 </div>
                         </div>
 
                         <div class="row">
-                        <button  type="submit" class="btn btn-primary submit1">Submit</button>
-                        <button (click)="back()" class="btn btn-primary submit2">Back</button>
-                        <button (click)="reset()" class="btn btn-primary submit3">Reset</button>
+                                <button type="submit" class="btn btn-primary submit1">Submit</button>
+
+                                <button type="reset" (click)="reset(userForm)" class="btn btn-primary submit3">Reset</button>
                         </div>
                 </form>
         </div>

@@ -1,41 +1,41 @@
 <div class="isha">
-        <div class="imgcontainer">
-                <img src="./assets/images/image7.jpg" alt="Logo" class="logo">
-        </div>
-        <div class="container">
-                <div class="row">
-                        <div class="col-md-8">
-                             <h1><b>ShopNow</b></h1>   
+    <div class="imgcontainer">
+        <img src="./assets/images/image7.jpg" alt="Logo" (click)="dashboard()" class="admin-logo">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><b>ShopNow</b></h1>
 
+            </div>
+            <div class="col-md-4">
+                <div class="storage1">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="storage2">{{val.firstName+" "+ val.lastName}}</p>
+                            <div class="clearfix"></div>
+                            <button class="btn1" (click)="log()">logout</button>
                         </div>
-                        <div class="col-md-4">
-                                <div class="storage1">
-                                        <div class="row">
-                                                <div class="col-md-6">
-                                                        <p class="storage2">{{val.firstName+" "+ val.lastName}}</p>
-                                                        <div class="clearfix"></div>
-                                                        <button class="btn1" (click)="log()">logout</button>
-                                                </div>
-                                                <div class="col-md-6">
-                                                        <ng-container *ngIf="!val.userImage">
-                                                                <span id='AwesomeFont'><i
+                        <div class="col-md-6">
+                            <ng-container *ngIf="!val.userImage">
+                                <span id='AwesomeFont'><i
                                                                                 class="fa fa-fw fa-user-circle"></i></span>
-                                                        </ng-container>
-                                                        <ng-container *ngIf="val.userImage">
-                                                                <img [src]="user" />
-                                                        </ng-container>
+                            </ng-container>
+                            <ng-container *ngIf="val.userImage">
+                                <img [src]="user" />
+                            </ng-container>
 
-                                                </div>
-                                        </div>
-
-
-
-                                </div>
                         </div>
+                    </div>
+
+
+
                 </div>
-
-
+            </div>
         </div>
+
+
+    </div>
 
 
 </div>

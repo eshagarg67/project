@@ -11,6 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './Admin/admin.component';
 import {FormComponent} from './Admin/product/form/product_form.component';
 import { CategoryFormComponent } from './Admin/category/category-form/category-form.component';
+import { HomeRoutingModule } from './home/home.route';
+
 
 
 
@@ -25,20 +27,24 @@ const routes: Routes = [
         component: DashboardComponent, // dashboardcontent
       },
       {
-        path: 'addform',
+        path: 'produts/addform',
         component: FormComponent,
       },
       {
-        path: 'editform/:id',
+        path: 'products/editform/:id',
         component: FormComponent,
       },
       {
-        path: 'categoryform',
+        path: 'categories/addform',
         component: CategoryFormComponent,
       },
       {
         path: 'categories',
         component: CategoryComponent
+      },
+      {
+        path: 'categories/editform/:id',
+       component: CategoryFormComponent,
       },
       {
         path: 'products',
@@ -51,18 +57,14 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: '',
-    component: HomeComponent
-  },
- 
-  {
     path: '', redirectTo: 'login', pathMatch: 'full'
   }
-  
 ];
 
+
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), HomeRoutingModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

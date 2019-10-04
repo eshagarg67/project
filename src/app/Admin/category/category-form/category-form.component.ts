@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms'
 import { CategoryService } from '../category.service';
 import { isNullOrUndefined } from 'util';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CategoryFormComponent implements OnInit {
   categoryformmodel: any = {
-    categoryName: '', categoryDescription: '',
+    categoryName: '', categoryDescription: ''
   };
   submitted: any = false;
   userForm: NgForm;
@@ -21,17 +22,36 @@ export class CategoryFormComponent implements OnInit {
   count: any;
   Id: any;
   list: any;
+  edit: any;
+  categoryId = -1;
+  image = '';
+  //image:any;
 
-  constructor(private toastr: ToastrService,private router: Router, private categoryservice: CategoryService) { }
-
-  ngOnInit() {
-    
+  constructor(private route: ActivatedRoute, private toastr: ToastrService, private router: Router, private categoryservice: CategoryService) {
   }
 
+  ngOnInit() {
+    this.getcategoryid();
+  }
+
+  getcategoryid() {
+    this.route.params.subscribe(param => {
+      if (!isNullOrUndefined(param['id'])) {
+        this.categoryId = parseInt(param['id']);
+        this.categoryservice.getedit(this.categoryId).subscribe(data => {
+          this.categoryformmodel = data.body;
+          if (this.categoryformmodel.categoryImage != null) {
+            this.image = "data:image/png;base64," + this.categoryformmodel.categoryImage;
+            this.file=null;
+          }
+        })
+      }
+    }, error => {
+    });
+  }
 
   onSubmit(data) {
-
-    if (data.valid) {
+    if (data.valid && this.file !== undefined) {
       this.sendRequest(data.value);
     }
     this.submitted = true;
@@ -45,28 +65,50 @@ export class CategoryFormComponent implements OnInit {
   }
 
   sendRequest(formValue) {
-    formValue.createdBy = this.getUserId();
+
+    const uid = this.getUserId();
+    if (this.categoryId === -1) {
+      formValue.createdBy = uid;
+    }
+    else {
+      formValue.categoryId = this.categoryId;
+      formValue.modifiedBy = uid;
+    }
     const formdata = new FormData();
     const scope = this;
     formdata.append('category', JSON.stringify(formValue));
 
-    formdata.append('file', this.file);
-
+    if (this.file) {
+      formdata.append('file', this.file);
+    }
     const objXhr = new XMLHttpRequest();
-    objXhr.open('POST', "/api/category/insert");
-    objXhr.onreadystatechange = function (aEvt) {
+    if (this.categoryId === -1) {
+      objXhr.open('POST', "/api/category/insert");
+    }
+    else {
+      objXhr.open('PUT', "/api/category/update");
+    }
+
+    objXhr.onreadystatechange = (aEvt) => {
       if (objXhr.readyState === 4) {
-        debugger;
         if (objXhr.status === 200) {
           const response = JSON.parse(objXhr.response);
           console.log(response);
           if (response.status === 1) {
-            scope.router.navigate(["/admin/categories"]);
+            if (this.categoryId === -1) {
+              scope.toastr.success('Added successfully', 'Add!')
+            }
+            else {
+              scope.toastr.success('Updated successfully', 'Update!')
+            }
+            setTimeout(() => {
+              scope.router.navigate(["/admin/categories"]);
+            }, 2000);
+
           } else {
-            scope.toastr.warning('Request failed','ohh!')
+            scope.toastr.warning('Submission failed', 'ohh!')
           }
         } else {
-
           scope.handleError(objXhr);
         }
       }
@@ -75,15 +117,29 @@ export class CategoryFormComponent implements OnInit {
   }
 
   handleError(objXhr: XMLHttpRequest) {
-   this.toastr.error('error','ohh!')
+    this.toastr.error('error', 'ohh!')
   }
 
   onFileChanged(event) {
     this.file = event.target.files[0];
   }
 
- 
-  
-  
+
+
+  back() {
+    this.router.navigate(["admin/categories"])
+  }
+
+  reset(userForm) {
+    if (!this.categoryId) {
+      userForm.reset();
+    }
+    else {
+      this.getcategoryid();
+    }
+
+    this.submitted = false;
+  }
+
 
 }

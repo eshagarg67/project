@@ -54,10 +54,10 @@ export class ProductComponent implements OnInit {
 
 
   add() {
-    this.router.navigate(["admin/addform"])
+   this.router.navigate(["admin/produts/addform"])
   }
 
-  edit(id) {
-    this.router.navigate(['admin/editform',id])
+  Edit(id) {
+    this.router.navigate(['admin/products/editform',id])
   }
 }
