@@ -3,7 +3,7 @@
 .banner_part {
     position: relative;
     background-color: #dde5e8;
-    @include background ('/assets/img/banner1.jpg');
+    @include background ('/assets/img/banner_img.png');
     .single_banner_slider {
         .banner_text {
             display: table;

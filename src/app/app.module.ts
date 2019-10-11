@@ -28,6 +28,7 @@ import { CategoryFormComponent } from './Admin/category/category-form/category-f
 
 // User view
 import { HomeService } from './shared/services/home.service';
+import { CatService } from './shared/services/cat.service';
 import { AppHeaderComponent } from './home/components/appheader/appheader.component';
 import { AppFooterComponent } from './home/components/appfooter/appfooter.component';
 import { BannerComponent } from './home/shared/banner/banner.component';
@@ -68,7 +69,7 @@ import { FeatureComponent } from './home/shared/feature/feature.component';
     }),
   ],
   providers: [LoginService, DashboardService, ApiService, AuthGuardService
-    , AuthService, CategoryService, ProductService ,HomeService],
+    , AuthService, CategoryService, ProductService ,HomeService,CatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
