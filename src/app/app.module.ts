@@ -16,7 +16,7 @@ import { CategoryComponent } from './Admin/category/category_list.component';
 import { ProductComponent } from './Admin/product/product_list.component';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 import { AuthService } from './shared/services/auth.service';
-import { HomeComponent } from './home/home.component';
+import { FeaturesComponent } from './features/features.component';
 import { AdminComponent } from './Admin/admin.component';
 import { DashboardService } from './Admin/dashboard/dashboard.service';
 import { ProductService } from './Admin/product/product.service';
@@ -29,10 +29,15 @@ import { CategoryFormComponent } from './Admin/category/category-form/category-f
 // User view
 import { HomeService } from './shared/services/home.service';
 import { CatService } from './shared/services/cat.service';
-import { AppHeaderComponent } from './home/components/appheader/appheader.component';
-import { AppFooterComponent } from './home/components/appfooter/appfooter.component';
-import { BannerComponent } from './home/shared/banner/banner.component';
-import { FeatureComponent } from './home/shared/feature/feature.component';
+import { ProService } from './shared/services/pro.service';
+import { AppHeaderComponent } from './features/components/appheader/appheader.component';
+import { AppFooterComponent } from './features/components/appfooter/appfooter.component';
+import { BannerComponent } from './features/shared/banner/banner.component';
+import { FeatureBoxComponent } from './features/shared/feature-box/feature-boxcomponent';
+import { FeaturedCategoriesComponent } from './features/components/featured-categories/featured-categories.component';
+import { LandingPageComponent } from './features/landing-page/landing-page.component';
+import { ArrivalProductComponent } from './features/shared/arrival-product/arrival-product.component';
+import { FeaturedProductsComponent } from './features/components/featured-products/featured-products.component';
 
 
 
@@ -41,7 +46,7 @@ import { FeatureComponent } from './home/shared/feature/feature.component';
     AppComponent,
     AppHeaderComponent,
     AppFooterComponent,
-    HomeComponent,
+    FeaturesComponent,
     LoginComponent,
     AdminComponent,
     HeaderComponent,
@@ -51,13 +56,16 @@ import { FeatureComponent } from './home/shared/feature/feature.component';
     FormComponent,
     CategoryFormComponent,
     BannerComponent,
-    FeatureComponent,
-
+    FeatureBoxComponent,
+    FeaturedCategoriesComponent,
+    LandingPageComponent,
+    ArrivalProductComponent,
+    FeaturedProductsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    
+
     FormsModule,
     CommonModule,
     HttpClientModule,
@@ -69,7 +77,7 @@ import { FeatureComponent } from './home/shared/feature/feature.component';
     }),
   ],
   providers: [LoginService, DashboardService, ApiService, AuthGuardService
-    , AuthService, CategoryService, ProductService ,HomeService,CatService],
+    , AuthService, CategoryService, ProductService, HomeService, CatService,ProService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

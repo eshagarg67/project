@@ -1,0 +1,10 @@
+<section class="feature_part pt-4">
+    <div class="container-fluid p-lg-0 overflow-hidden">
+        <div class="row align-items-center justify-content-between">
+         <ng-container *ngFor="let cat of categories">
+          <app-feature-box [item]="cat" class="col-lg-4 col-sm-6"></app-feature-box>
+         </ng-container>
+        </div>
+    </div>
+</section>
+

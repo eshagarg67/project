@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from '../../.././shared/services/home.service';
+import { HomeService } from '../../../shared/services/home.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -8,27 +8,25 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./appheader.component.scss']
 })
 export class AppHeaderComponent implements OnInit {
-count:any;
-  constructor(private toastr: ToastrService, private homeservice:HomeService) { }
+  count: any;
+  constructor(private toastr: ToastrService, private homeservice: HomeService) { }
 
   ngOnInit() {
     this.getcategory();
   }
   getcategory() {
     this.homeservice.categoryuser().subscribe(data => {
-      console.log(data);
-      debugger;
       this.count = data.body;
-      debugger;
-      if(data.statusCode===200){
       
-    }
-  },
-  error=>{
-    this.toastr.error('Get failed', 'Get Data!')
- 
-  });
-    
+      if (data.statusCode === 200) {
+
+      }
+    },
+      error => {
+        this.toastr.error('Get failed', 'Get Data!')
+
+      });
+
   }
 
 }

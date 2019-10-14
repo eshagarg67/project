@@ -7,11 +7,11 @@ import { ProductComponent } from './Admin/product/product_list.component';
 import {
   AuthGuardService as AuthGuard
 } from './shared/services/auth-guard.service';
-import { HomeComponent } from './home/home.component';
+import { FeaturesComponent } from './features/features.component';
 import { AdminComponent } from './Admin/admin.component';
-import {FormComponent} from './Admin/product/form/product_form.component';
+import { FormComponent } from './Admin/product/form/product_form.component';
 import { CategoryFormComponent } from './Admin/category/category-form/category-form.component';
-import { HomeRoutingModule } from './home/home.route';
+import { FeaturesRoutingModule } from './features/features.route';
 
 
 
@@ -21,7 +21,7 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     canActivate: [AuthGuard],
-    children:[
+    children: [
       {
         path: 'dashboard',
         component: DashboardComponent, // dashboardcontent
@@ -44,7 +44,7 @@ const routes: Routes = [
       },
       {
         path: 'categories/editform/:id',
-       component: CategoryFormComponent,
+        component: CategoryFormComponent,
       },
       {
         path: 'products',
@@ -64,7 +64,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), HomeRoutingModule],
+  imports: [RouterModule.forRoot(routes), FeaturesRoutingModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
