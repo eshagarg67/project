@@ -19,7 +19,13 @@ export class CatService {
      }
     
 
-
+     productbycategory(id:Number) :Observable<any>{
+    
+        const query: any[] = [];        
+        query.push({ key: 'id', value: id });
+        return this.apiService.sendRequest("/api/product/productlistbycategory/"+id,"GET");
+    }
+   
  
 }
 

@@ -3,7 +3,7 @@
                     <div class="single_feature_post_text">
                             <img src="{{'data:image/jpg;base64,' + item.categoryImage}}"/>
                         <div class="hover_text">
-                            <a href="single-product.html" class="btn_2">shop for male</a>
+                            <a class="btn_2" (click)="Go(item.categoryId);">{{categoryName}}</a>
                         </div>
                     </div>
                

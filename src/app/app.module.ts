@@ -33,11 +33,13 @@ import { ProService } from './shared/services/pro.service';
 import { AppHeaderComponent } from './features/components/appheader/appheader.component';
 import { AppFooterComponent } from './features/components/appfooter/appfooter.component';
 import { BannerComponent } from './features/shared/banner/banner.component';
-import { FeatureBoxComponent } from './features/shared/feature-box/feature-boxcomponent';
+import { FeatureBoxComponent } from './features/shared/feature-box/feature-box.component';
 import { FeaturedCategoriesComponent } from './features/components/featured-categories/featured-categories.component';
 import { LandingPageComponent } from './features/landing-page/landing-page.component';
 import { ArrivalProductComponent } from './features/shared/arrival-product/arrival-product.component';
 import { FeaturedProductsComponent } from './features/components/featured-products/featured-products.component';
+import { ShippingComponent } from './features/shared/shipping/shipping.component';
+import { ProductlistbycategoryComponent } from './features/productlistbycategory/productlistbycategory.component';
 
 
 
@@ -60,7 +62,9 @@ import { FeaturedProductsComponent } from './features/components/featured-produc
     FeaturedCategoriesComponent,
     LandingPageComponent,
     ArrivalProductComponent,
-    FeaturedProductsComponent
+    FeaturedProductsComponent,
+    ShippingComponent,
+    ProductlistbycategoryComponent
   ],
   imports: [
     BrowserModule,
