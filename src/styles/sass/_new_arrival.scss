@@ -42,7 +42,7 @@
         justify-content: space-between;
         .weidth_1{
             flex: 39% 0 0;    
-            max-width: 39%;
+            max-width: 32%;
             @media #{$small_mobile}{
                 flex: 100% 0 0;    
                 max-width: 100%;

@@ -18,6 +18,12 @@ export class ProService {
          return this.apiService.sendRequest("/api/product/listing",'GET', null, null);
      }
     
+     productbyid(id:number): Observable<any> {
+
+        const query: any[] = [];        
+        query.push({ key: 'id', value: id });
+        return this.apiService.sendRequest("/api/product/detail/"+id,"GET");
+    }
 
 
  

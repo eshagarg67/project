@@ -17,6 +17,14 @@ export class CatService {
 
          return this.apiService.sendRequest("/api/category/listing",'GET', null, null);
      }
+
+     detailbyid(id:number): Observable<any> {
+
+        const query: any[] = [];        
+        query.push({ key: 'id', value: id });
+        return this.apiService.sendRequest("/api/category/detail/"+id,"GET");
+    }
+
     
 
      productbycategory(id:Number) :Observable<any>{

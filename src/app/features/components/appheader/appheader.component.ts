@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../../../shared/services/home.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-s-header',
@@ -9,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AppHeaderComponent implements OnInit {
   count: any;
-  constructor(private toastr: ToastrService, private homeservice: HomeService) { }
+  constructor(private router: Router,private toastr: ToastrService, private homeservice: HomeService) { }
 
   ngOnInit() {
     this.getcategory();
@@ -28,5 +29,10 @@ export class AppHeaderComponent implements OnInit {
       });
 
   }
+
+  Go(id) {
+    this.router.navigate(['category',id])
+}
+
 
 }

@@ -79,15 +79,24 @@
 			margin-bottom: 10px;
 		}
 
+		.hide{
+			color: $white_color;
+					margin-bottom: 14px;
+					display: inline-block;
+		}
+
 		.list-unstyled {
 			li {
 				a {
 					color: $white_color;
 					margin-bottom: 14px;
 					display: inline-block;
-					&:hover {
-						color: $btn_bg !important;
-					}
+					// &:hover {
+						// color: $btn_bg !important;
+					// }
+				}
+				.new:hover{
+					color: $btn_bg !important;
 				}
 			}
 		}

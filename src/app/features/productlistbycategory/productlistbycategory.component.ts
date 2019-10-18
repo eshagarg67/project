@@ -13,21 +13,25 @@ export class ProductlistbycategoryComponent implements OnInit {
 productlist:any;
 categoryId:any;
 category:any;
+categorylist:any;
+//val:any;
   constructor(private route: ActivatedRoute, private toastr: ToastrService, private router: Router, private catservice: CatService) { 
     this.route.params.subscribe(param => {
       this.categoryId= parseInt(param['id']);
       console.log(this.categoryId);
+      this.getproductlistbycategoryid();
     });
   }
 
   ngOnInit() {
-    this.getproductlistbycategoryid();
+    
+    this.getcategory();
+    this.getdetailbyid();
   }
   getproductlistbycategoryid() {
     
       this.catservice.productbycategory(this.categoryId).subscribe(data=>{
-        debugger;
-        this.productlist=data.body;
+          this.productlist=data.body;
       },
       error=>{
    
@@ -38,9 +42,33 @@ category:any;
   
   }
 
+  getdetailbyid() {
+    
+    this.catservice.detailbyid(this.categoryId).subscribe(data=>{
+        this.categorylist=data.body;
+         //this.val=this.categorylist.categoryName
+    },
+    error=>{
+ 
+    
+    });
+  
+
+
+}
+
+  Go(id) {
+    this.router.navigate(['category',id])
+}
+
+View(id) {
+  this.router.navigate(['category/product',id])
+}
+
+
   getcategory() {
     this.catservice.categoryuser().subscribe(data => {
-      
+      debugger;
       if(data.statusCode===200){
         this.category = data.body;
     }

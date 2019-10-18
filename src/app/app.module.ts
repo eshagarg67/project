@@ -40,6 +40,10 @@ import { ArrivalProductComponent } from './features/shared/arrival-product/arriv
 import { FeaturedProductsComponent } from './features/components/featured-products/featured-products.component';
 import { ShippingComponent } from './features/shared/shipping/shipping.component';
 import { ProductlistbycategoryComponent } from './features/productlistbycategory/productlistbycategory.component';
+import { ProductDetailComponent } from './features/components/product-detail/product-detail.component';
+import { AboutComponent } from './features/components/appfooter/about/about.component';
+import { FaqComponent } from './features/components/appfooter/faq/faq.component';
+import { PolicyComponent } from './features/components/appfooter/policy/policy.component';
 
 
 
@@ -64,7 +68,11 @@ import { ProductlistbycategoryComponent } from './features/productlistbycategory
     ArrivalProductComponent,
     FeaturedProductsComponent,
     ShippingComponent,
-    ProductlistbycategoryComponent
+    ProductlistbycategoryComponent,
+    ProductDetailComponent,
+    AboutComponent,
+    FaqComponent,
+    PolicyComponent
   ],
   imports: [
     BrowserModule,
