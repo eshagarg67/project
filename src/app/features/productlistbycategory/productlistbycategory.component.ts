@@ -68,7 +68,7 @@ View(id) {
 
   getcategory() {
     this.catservice.categoryuser().subscribe(data => {
-      debugger;
+   //   debugger;
       if(data.statusCode===200){
         this.category = data.body;
     }

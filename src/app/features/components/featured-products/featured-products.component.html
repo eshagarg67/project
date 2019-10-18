@@ -9,10 +9,8 @@
             <div class="col-lg-4">
                 <div class="arrival_filter_item filters">
                     <ul>
-                        <li class="active controls" data-filter="*">all</li>
-                        <li class="controls" data-toggle=".men">men</li>
-                        <li class="controls" data-toggle=".women">women</li>
-                        <li class="controls" data-toggle=".shoes">shoes</li>
+                        <li class="active controls" data-filter="*">All</li>
+                        <li (click)="Filter(cat.categoryId)" *ngFor="let cat of categories" class="controls" data-toggle=".men">{{cat.categoryName}}</li>
                     </ul>
                 </div>
             </div>
@@ -22,8 +20,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="new_arrival_iner filter-container">
-                    <ng-container *ngFor="let pro of products |slice:15:21">
-                        <app-arrival-product [new]="pro" class="single_arrivel_item weidth_1"></app-arrival-product>
+                    <ng-container *ngFor="let pro of products|slice:0:6">
+                        <app-arrival-product [items]="pro" class="single_arrivel_item weidth_1"></app-arrival-product>
                     </ng-container>
 
                 </div>

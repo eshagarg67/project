@@ -19,7 +19,6 @@ export class CatService {
      }
 
      detailbyid(id:number): Observable<any> {
-
         const query: any[] = [];        
         query.push({ key: 'id', value: id });
         return this.apiService.sendRequest("/api/category/detail/"+id,"GET");

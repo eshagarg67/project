@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CatService } from '../../../shared/services/cat.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -10,58 +11,42 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./appfooter.component.scss']
 })
 export class AppFooterComponent implements OnInit {
-category:any;
-categorylist:any;
-categoryId:any;
+  footermodel: any = {
+    uemail: '', upassword: '',
+  };
+  submitted: any = false;
+  userForm: NgForm;
+  category: any;
+  categorylist: any;
+  categoryId: any;
 
 
-  constructor( private route: ActivatedRoute,private toastr: ToastrService, private router: Router, private catservice: CatService) { 
-    this.route.params.subscribe(param => {
-      this.categoryId= parseInt(param['id']);
-      this.getdetailbyid();
-    });
+  constructor(private route: ActivatedRoute, private toastr: ToastrService, private router: Router, private catservice: CatService) {
   }
 
   ngOnInit() {
-    this.getcategory();
-    //this.getdetailbyid();
+  //  this.getcategory();
   }
 
-  getcategory() {
-    this.catservice.categoryuser().subscribe(data => {
-      debugger;
-      if(data.statusCode===200){
-        this.category = data.body;
-    }
-  
-    else{
-      this.toastr.warning('Data not found')
-    }
-  },
-  error=>{
-    this.toastr.error('Get failed', 'Get Data!')
- 
-  });
-    
-  }
+  // getcategory() {
+  //   this.catservice.categoryuser().subscribe(data => {
+  //     debugger;
+  //     if (data.statusCode === 200) {
+  //       this.category = data.body;
+  //     }
 
-  getdetailbyid() {
-    
-    this.catservice.detailbyid(this.categoryId).subscribe(data=>{
-        this.categorylist=data.body;
-    },
-    error=>{
- 
-    
-    });
-  
+  //     else {
+  //       this.toastr.warning('Data not found')
+  //     }
+  //   },
+  //     error => {
+  //       this.toastr.error('Get failed', 'Get Data!')
 
+  //     });
 
-}
+  // }
 
   Go(id) {
-    this.router.navigate(['category',id])
-}
-
-
+    this.router.navigate(['category', id])
+  }
 }
