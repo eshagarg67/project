@@ -9,8 +9,8 @@
             <div class="col-lg-4">
                 <div class="arrival_filter_item filters">
                     <ul>
-                        <li class="active controls" data-filter="*">All</li>
-                        <li (click)="Filter(cat.categoryId)" *ngFor="let cat of categories" class="controls" data-toggle=".men">{{cat.categoryName}}</li>
+                        <li (click)= "setActive(-1)" [ngClass]="{'active':toggle === -1}" class="active controls" (click)="getproduct();" let i=index data-filter="*">All</li>
+                         <li (click)= "setActive(i)" [ngClass]="{'active':toggle === i}" *ngFor="let cat of categories; let i=index" (click)="Filter(cat.categoryId)" class="controls" data-toggle="men">{{cat.categoryName}}</li> 
                     </ul>
                 </div>
             </div>

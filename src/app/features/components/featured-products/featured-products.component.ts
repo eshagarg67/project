@@ -14,6 +14,7 @@ export class FeaturedProductsComponent implements OnInit {
     categoryId: any;
     categorylist: any;
     originalProducts = [];
+    toggle :number=-1;
     constructor(private router: Router, private route: ActivatedRoute, private toastr: ToastrService, private proservice: ProService, private catservice: CatService) {
       
     }
@@ -72,5 +73,10 @@ export class FeaturedProductsComponent implements OnInit {
 
             });
     }
+
+    setActive(index){
+        this.toggle=index;   
+    }
+
 }
 
