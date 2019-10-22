@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../../../shared/services/home.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { SharedService } from 'src/app/shared/services/shared.service';
 
 @Component({
   selector: 'app-s-header',
@@ -9,21 +10,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./appheader.component.scss']
 })
 export class AppHeaderComponent implements OnInit {
-  count: any;
-  constructor(private router: Router,private toastr: ToastrService, private homeservice: HomeService) { }
+  categories = [];
+  constructor(private router: Router, private toastr: ToastrService, private homeservice: HomeService,
+    private sharedService: SharedService) { }
 
   ngOnInit() {
     this.getcategory();
   }
   getcategory() {
     this.homeservice.categoryuser().subscribe(data => {
-      this.count = data.body;
-      
       if (data.statusCode === 200) {
-
+        this.categories = data.body;
+        this.sharedService.setCategories(this.categories);
       }
     },
       error => {
+        this.categories = [];
+        this.sharedService.setCategories(this.categories);
         this.toastr.error('Get failed', 'Get Data!')
 
       });
@@ -31,8 +34,12 @@ export class AppHeaderComponent implements OnInit {
   }
 
   Go(id) {
-    this.router.navigate(['category',id])
-}
+    this.router.navigate(['category', id])
+  }
+
+  navigate() {
+    this.router.navigate([''])
+  }
 
 
 }

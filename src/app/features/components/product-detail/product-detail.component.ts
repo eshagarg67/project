@@ -11,74 +11,57 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ProductDetailComponent implements OnInit {
 
-  detail:any;
-  productId:any;
-  product:any;
-  categories:any;
-  count:number=1;
-  
-  constructor(private catservice: CatService,private route: ActivatedRoute,private toastr: ToastrService,private router: Router, private proservice: ProService) {
+  detail: any;
+  productId: any;
+  product: any;
+  categoryId: any;
+  category: any;
+  count: number = 1;
+  isDataAvailable=false;
+
+  constructor(private catservice: CatService, private route: ActivatedRoute, private toastr: ToastrService, private router: Router, private proservice: ProService) {
     this.route.params.subscribe(param => {
-      this.productId= parseInt(param['id']);
-      console.log(this.productId);
+   
+      this.productId = parseInt(param['id']);
       this.getproductbyid();
     });
-   }
+  }
 
   ngOnInit() {
-    this.getcategory();
-   
   }
 
-  getproductbyid(){
-    this.proservice.productbyid(this.productId).subscribe(data=>{
-      this.product=data.body;
-      console.log(this.product);
+  getproductbyid() {
+    this.proservice.productbyid(this.productId).subscribe(data => {
+      debugger;
+      if (data.statusCode === 200){
+        debugger;
+        this.product = data.body;
+        this.isDataAvailable=true;
+      }
+      else{
+        this.toastr.warning('Data not found')
+      }
+      
      
-  },
-  error=>{
-
-  
-  });
-
-  }
-
-  getcategory() {
-    this.catservice.categoryuser().subscribe(data => {
-        if (data.statusCode === 200) {
-                this.categories = data.body;
-                debugger;
-        } else {
-            this.toastr.warning('Data not found')
-        }
     },
-        error => {
-            this.toastr.error('Get failed', 'Get Data!')
+      error => {
+        this.toastr.error('Get failed', 'Get Data!')
+      });
 
-        });
+  }
 
-}
+  increment() {
+    if (this.count <= this.product.quantityInStock) {
+      this.count++;
+    }
 
-increment(){
-  if(this.count<=this.product.quantityInStock){
-    this.count++;
   }
- 
-}
-decrement(){
-  if(this.count>1){
-    this.count--;
+  decrement() {
+    if (this.count > 1) {
+      this.count--;
+    }
   }
-}
 
-instock(){
-  if(this.product.quantityInStock!=null){
-    "In Stock"
-  }
-  else{
-    "Out Of Stock"
-  }
-}
-    
-  
+
+
 }

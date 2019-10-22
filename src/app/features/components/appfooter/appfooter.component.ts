@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CatService } from '../../../shared/services/cat.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
+import { SharedService } from 'src/app/shared/services/shared.service';
 
 
 @Component({
@@ -16,19 +17,25 @@ export class AppFooterComponent implements OnInit {
   };
   submitted: any = false;
   userForm: NgForm;
-  category: any;
+  categories: any;
   categorylist: any;
   categoryId: any;
 
 
-  constructor(private route: ActivatedRoute, private toastr: ToastrService, private router: Router, private catservice: CatService) {
+  constructor(private sharedService: SharedService,private route: ActivatedRoute, private toastr: ToastrService, private router: Router, private catservice: CatService) {
+    this.sharedService.categories$.subscribe((data) => {
+      if (data !== null && data.length > 0) {
+          this.getcategory(data);
+      }
+  });
   }
 
   ngOnInit() {
   //  this.getcategory();
   }
 
-  // getcategory() {
+   getcategory(data) {
+    this.categories = data;
   //   this.catservice.categoryuser().subscribe(data => {
   //     debugger;
   //     if (data.statusCode === 200) {
@@ -44,9 +51,10 @@ export class AppFooterComponent implements OnInit {
 
   //     });
 
-  // }
+   }
 
   Go(id) {
+    debugger;
     this.router.navigate(['category', id])
   }
 }

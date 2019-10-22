@@ -1,5 +1,5 @@
 
-
+<ng-container *ngIf="isDataAvailable===true"> 
   <!-- breadcrumb start-->
   <section class="breadcrumb breadcrumb_bg">
        <div class="container"> 
@@ -7,7 +7,7 @@
               <div class="col-lg-12">
                    <div class="breadcrumb_iner"> 
                       <div class="breadcrumb_iner_item">
-                          <p>Home/Shop/Single product</p>
+                          <p>Home/{{product.categoryName}}/{{product.productName}}</p>
                       </div>
                   </div>
               </div>
@@ -45,10 +45,15 @@
             <ul class="list">
               <li>
                 <a class="active">
-                  <span>Category</span>:</a>
+                    <a (click)="detailbyid(product.categoryId);"> <span>Category</span> :{{product.categoryName}}</a>
+                  
+                </a>
               </li>
               <li>
-                <a> <span>Availability</span> :</a>
+               <a>
+                <span>Availability</span> <span *ngIf="!product.quantityInStock==0">:In Stock </span>
+                  <span *ngIf="product.quantityInStock==0">:Out Of Stock </span>
+               </a>
               </li>
             </ul>
             <p>
@@ -482,5 +487,6 @@
     </div>
   </section>
   <!-- product_list part end-->
+</ng-container>
 
  

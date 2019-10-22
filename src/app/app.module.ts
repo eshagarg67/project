@@ -44,6 +44,7 @@ import { ProductDetailComponent } from './features/components/product-detail/pro
 import { AboutComponent } from './features/components/appfooter/about/about.component';
 import { FaqComponent } from './features/components/appfooter/faq/faq.component';
 import { PolicyComponent } from './features/components/appfooter/policy/policy.component';
+import { SharedService } from './shared/services/shared.service';
 
 
 
@@ -88,7 +89,7 @@ import { PolicyComponent } from './features/components/appfooter/policy/policy.c
 
     }),
   ],
-  providers: [LoginService, DashboardService, ApiService, AuthGuardService
+  providers: [LoginService, SharedService , DashboardService, ApiService, AuthGuardService
     , AuthService, CategoryService, ProductService, HomeService, CatService,ProService],
   bootstrap: [AppComponent]
 })
