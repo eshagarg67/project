@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy } from '@angular/core';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-features',
@@ -7,5 +8,4 @@ import { Component } from '@angular/core';
 })
 export class FeaturesComponent {
   
-
 }

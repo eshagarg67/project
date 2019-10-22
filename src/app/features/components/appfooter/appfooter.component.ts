@@ -37,7 +37,7 @@ export class AppFooterComponent implements OnInit {
    getcategory(data) {
     this.categories = data;
   //   this.catservice.categoryuser().subscribe(data => {
-  //     debugger;
+  //     
   //     if (data.statusCode === 200) {
   //       this.category = data.body;
   //     }
@@ -53,7 +53,7 @@ export class AppFooterComponent implements OnInit {
 
    }
 
-  Go(id) {
+  navigate(id) {
     debugger;
     this.router.navigate(['category', id])
   }

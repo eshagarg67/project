@@ -16,7 +16,6 @@ export class ArrivalProductComponent implements OnInit {
   ngOnInit() {
   }
   Go(id) {
-  //  debugger;
     this.router.navigate(['product',id])
     
   }

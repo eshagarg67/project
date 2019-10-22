@@ -22,14 +22,14 @@ export class ProductlistbycategoryComponent {
     this.route.params.subscribe(param => {
       this.categoryId = parseInt(param['id']);
       this.getproductlistbycategoryid();
-      this.isDataAvailable=true;
+    
     });
 
     this.sharedService.categories$.subscribe((data) => {
       if (data !== null && data.length > 0) {
         this.categories = data;
-        this.isDataAvailable=true;
       }
+      
       
     });
 
@@ -40,14 +40,18 @@ export class ProductlistbycategoryComponent {
       if (data.statusCode === 200) {
         this.categoryName = data.body.categoryName;
         this.productlist = data.body.products;
+        this.isDataAvailable=true;
       }
+     
       else{
         this.toastr.warning("Data not found")
       }
+     
     },
       error => {
         this.toastr.error('Get failed', 'Get Data!')
       });
+      
   }
 
 
@@ -57,7 +61,5 @@ export class ProductlistbycategoryComponent {
     this.router.navigate(['category', id])
   }
 
-  View(id) {
-    this.router.navigate(['category',id,'product', id])
-  }
+  
 }

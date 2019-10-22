@@ -32,9 +32,7 @@ export class ProductDetailComponent implements OnInit {
 
   getproductbyid() {
     this.proservice.productbyid(this.productId).subscribe(data => {
-      debugger;
       if (data.statusCode === 200){
-        debugger;
         this.product = data.body;
         this.isDataAvailable=true;
       }

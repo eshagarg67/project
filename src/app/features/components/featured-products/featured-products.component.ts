@@ -29,7 +29,6 @@ export class FeaturedProductsComponent implements OnInit {
         this.proservice.productuser().subscribe(data => {
             if (data.statusCode === 200) {
                 if (data.body !== null || data.body !== undefined) {
-               //     debugger;
                     console.log(data);
                     this.products = data.body;
                     this.originalProducts = data.body;
@@ -49,7 +48,6 @@ export class FeaturedProductsComponent implements OnInit {
 
 
     Filter(id) {
-        debugger;
         this.products = this.originalProducts;
         this.products = this.products.filter(x => x.categoryId === id);
 

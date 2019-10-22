@@ -6,22 +6,12 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements  AfterViewInit,OnDestroy {
+export class AppComponent {
   title = 'shoppingApp';
 
   constructor (private router: Router){}
 
-  ngAfterViewInit() {
-    if(this.router.url === ''){
-      document.querySelector('body').classList.add('home');
-    }
-    
-  }
   
-  ngOnDestroy() {
-      document.querySelector('body').classList.remove('home');
-    
-  }
   
   
 }
