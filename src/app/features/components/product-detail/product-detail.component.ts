@@ -3,6 +3,7 @@ import { ProService } from '../../../shared/services/./pro.service';
 import { CatService } from '../../../shared/services/cat.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-detail',
@@ -18,6 +19,7 @@ export class ProductDetailComponent implements OnInit {
   category: any;
   count: number = 1;
   isDataAvailable=false;
+  visible=false;
 
   constructor(private catservice: CatService, private route: ActivatedRoute, private toastr: ToastrService, private router: Router, private proservice: ProService) {
     this.route.params.subscribe(param => {
@@ -31,10 +33,12 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getproductbyid() {
-    this.proservice.productbyid(this.productId).subscribe(data => {
+    this.visible=true;
+    this.proservice.productbyid(this.productId).pipe(delay(5000)).subscribe(data => {
       if (data.statusCode === 200){
         this.product = data.body;
         this.isDataAvailable=true;
+        this.visible=false;
       }
       else{
         this.toastr.warning('Data not found')
@@ -44,6 +48,7 @@ export class ProductDetailComponent implements OnInit {
     },
       error => {
         this.toastr.error('Get failed', 'Get Data!')
+        this.visible=false;
       });
 
   }

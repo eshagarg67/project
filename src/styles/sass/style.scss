@@ -1,3 +1,4 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 // variable scss
 @import "variables";
 // mixin scss
@@ -35,11 +36,12 @@
      cursor: pointer;
  }
  a:active{
-    color:blue;
+     color:blue;
 }
 
 img{
     cursor: pointer;
+    width:100%;
 }
 
 body.home{

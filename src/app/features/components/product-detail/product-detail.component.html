@@ -17,15 +17,18 @@
   <!-- breadcrumb start-->
 
   <!--================Single Product Area =================-->
+  <section>
   <div class="product_image_area section_padding">
     <div class="container">
       <div class="row s_product_inner">
         <div class="col-lg-5">
-          <div class="product_slider_img">
-            <div id="vertical">
-              <div data-thumb="img/product_details/prodect_details_1.png">
+           <div class="product_slider_img"> 
+             <div id="vertical">
+               <div data-thumb="img/product_details/prodect_details_1.png"> 
               <img src="{{'data:image/jpg;base64,' + product.productImage}}" />
-              </div>
+              </div> 
+
+
               <!-- <div data-thumb="img/product_details/prodect_details_2.png">
                 <img src="assets/img/product_details/prodect_details_2.png"/>
               </div>
@@ -35,8 +38,8 @@
               <div data-thumb="img/product_details/prodect_details_4.png">
                 <img src="assets/img/product_details/prodect_details_4.png" />
               </div>-->
-            </div>
-          </div>
+           </div> 
+           </div> 
         </div>
         <div class="col-lg-5 offset-lg-1">
           <div class="s_product_text">
@@ -80,6 +83,7 @@
       </div>
     </div>
   </div>
+  </section>
   <!--================End Single Product Area =================-->
 
   <!--================Product Description Area =================-->
@@ -488,5 +492,8 @@
   </section>
   <!-- product_list part end-->
 </ng-container>
+
+<mat-progress-spinner [hidden]="!visible" class="spinner" [color]="'primary'" [mode]="'indeterminate'" [value]="50">
+</mat-progress-spinner>
 
  

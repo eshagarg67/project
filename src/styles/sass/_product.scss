@@ -27,7 +27,7 @@
         text-align: center;
         background: #fff;
         border-radius: 30px;
-        color: $title-color;
+        color: $title-color !important;
         margin-right: 25px;
 
         &:last-child {
@@ -1130,6 +1130,7 @@
                 border: 1px solid #eeeeee;
                 border-radius: 3px;
                 max-width: 150px;
+              
               }
             }
 
@@ -1877,6 +1878,7 @@
     position: absolute;
     right: 40px;
     top: 0px;
+   
   }
 }
 
@@ -2104,9 +2106,9 @@
     }
   }
   .btn_3{
-    padding: 13px 36px;
+    padding: 13px 36px ;
     &:hover{
-      color: $primary-color;
+      color: $primary-color !important;
       background-color: $white_color;
       box-shadow: -14.142px 14.142px 20px 0px rgba(0, 0, 0, 0.1);
       border: 1px solid $white_color;
@@ -2145,7 +2147,7 @@
         height: 45px;
         line-height: 45px;
         text-align: center;
-        color: $white_color;
+        color: $white_color ;
         margin-right: 15px;
         &:hover{
           background-color: $primary-color;

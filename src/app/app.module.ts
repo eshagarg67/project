@@ -45,6 +45,7 @@ import { AboutComponent } from './features/components/appfooter/about/about.comp
 import { FaqComponent } from './features/components/appfooter/faq/faq.component';
 import { PolicyComponent } from './features/components/appfooter/policy/policy.component';
 import { SharedService } from './shared/services/shared.service';
+import {MatProgressSpinnerModule} from '@angular/material'
 
 
 
@@ -82,6 +83,7 @@ import { SharedService } from './shared/services/shared.service';
     FormsModule,
     CommonModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 2500,

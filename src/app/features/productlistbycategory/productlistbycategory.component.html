@@ -1,9 +1,11 @@
 <!--================Home Banner Area =================-->
 <!-- breadcrumb start-->
+
+
 <ng-container *ngIf="isDataAvailable===true">
     <section class="breadcrumb breadcrumb_bg">
 
-         <div class="container">
+        <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="breadcrumb_iner">
@@ -13,7 +15,7 @@
                     </div>
                 </div>
             </div>
-         </div>
+        </div>
     </section>
     <!-- breadcrumb start-->
 
@@ -359,3 +361,5 @@
     </section>
 </ng-container>
 <!--================End Category Product Area =================-->
+<mat-progress-spinner [hidden]="!visible" class="spinner" [color]="'primary'" [mode]="'indeterminate'" [value]="50">
+</mat-progress-spinner>

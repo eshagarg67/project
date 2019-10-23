@@ -75,6 +75,9 @@ export class FeaturedProductsComponent implements OnInit {
     setActive(index){
         this.toggle=index;   
     }
-
+    Go(id) {
+        this.router.navigate(['product',id])
+        
+      }
 }
 

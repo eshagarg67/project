@@ -4,6 +4,7 @@ import { CatService } from '../../shared/services/cat.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-category-detail',
@@ -17,7 +18,9 @@ export class ProductlistbycategoryComponent {
   categoryName = '';
   categories = [];
   isDataAvailable=false;
-  //val:any;
+  visible=false;
+
+
   constructor(private sharedService: SharedService, private route: ActivatedRoute, private toastr: ToastrService, private router: Router, private catservice: CatService) {
     this.route.params.subscribe(param => {
       this.categoryId = parseInt(param['id']);
@@ -36,11 +39,13 @@ export class ProductlistbycategoryComponent {
   }
 
   getproductlistbycategoryid() {
-    this.catservice.productbycategory(this.categoryId).subscribe(data => {
+    this.visible = true;
+    this.catservice.productbycategory(this.categoryId).pipe(delay(5000)).subscribe(data => {
       if (data.statusCode === 200) {
         this.categoryName = data.body.categoryName;
         this.productlist = data.body.products;
         this.isDataAvailable=true;
+        this.visible = false;
       }
      
       else{
@@ -50,7 +55,9 @@ export class ProductlistbycategoryComponent {
     },
       error => {
         this.toastr.error('Get failed', 'Get Data!')
+        this.visible = false;
       });
+     
       
   }
 

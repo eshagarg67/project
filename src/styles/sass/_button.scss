@@ -30,10 +30,10 @@
     -webkit-transition: 0.5s;
     transition: 0.5s;
     text-transform: capitalize;
-    color: #fff;
+    color: #fff !important;
 	&:hover{
 		background-color: $white_color;
-		color: $btn_bg;
+		color: $btn_bg !important;
 	}
 }
 .btn_3{
@@ -44,7 +44,7 @@
 	border: 1px solid $section_bg;
 	font-size: 15px;
 	font-weight: 700;
-	color: $white_color;
+	color: $white_color !important;
 	text-transform: uppercase;
 	font-weight: 400;
 	border: 1px solid $btn_bg;
