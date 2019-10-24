@@ -18,26 +18,26 @@ export class ProductDetailComponent implements OnInit {
   categoryId: any;
   category: any;
   count: number = 1;
-  isDataAvailable=false;
+  products:any;
   visible=false;
 
   constructor(private catservice: CatService, private route: ActivatedRoute, private toastr: ToastrService, private router: Router, private proservice: ProService) {
     this.route.params.subscribe(param => {
-   
+      this.visible=true;
       this.productId = parseInt(param['id']);
       this.getproductbyid();
     });
   }
 
   ngOnInit() {
+    this.getproduct();
   }
 
   getproductbyid() {
-    this.visible=true;
-    this.proservice.productbyid(this.productId).pipe(delay(5000)).subscribe(data => {
+   
+    this.proservice.productbyid(this.productId).pipe(delay(2000)).subscribe(data => {
       if (data.statusCode === 200){
         this.product = data.body;
-        this.isDataAvailable=true;
         this.visible=false;
       }
       else{
@@ -52,6 +52,26 @@ export class ProductDetailComponent implements OnInit {
       });
 
   }
+
+  getproduct() {
+    this.proservice.productuser().subscribe(data => {
+        if (data.statusCode === 200) {
+            if (data.body !== null || data.body !== undefined) {
+              debugger;
+                this.products = data.body;
+            }
+        } else {
+            this.toastr.warning('Data not found')
+        }
+    },
+        error => {
+            this.toastr.error('Get failed', 'Get Data!')
+
+        });
+
+}
+
+
 
   increment() {
     if (this.count <= this.product.quantityInStock) {

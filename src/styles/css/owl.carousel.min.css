@@ -73,7 +73,7 @@
 .owl-carousel .owl-dot,
 .owl-carousel .owl-nav .owl-next,
 .owl-carousel .owl-nav .owl-prev {
-    cursor: pointer;
+     cursor: pointer; 
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
@@ -185,7 +185,7 @@
     margin-left: -40px;
     margin-top: -40px;
     /* background: url(owl.video.play.png) no-repeat; */
-    cursor: pointer;
+     cursor: pointer; 
     z-index: 1;
     backface-visibility: hidden;
     transition: transform .1s ease

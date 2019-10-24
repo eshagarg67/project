@@ -46,6 +46,7 @@ import { FaqComponent } from './features/components/appfooter/faq/faq.component'
 import { PolicyComponent } from './features/components/appfooter/policy/policy.component';
 import { SharedService } from './shared/services/shared.service';
 import {MatProgressSpinnerModule} from '@angular/material'
+import { AddToCartComponent } from './features/shared/addtoCart/addtocart.component';
 
 
 
@@ -74,7 +75,8 @@ import {MatProgressSpinnerModule} from '@angular/material'
     ProductDetailComponent,
     AboutComponent,
     FaqComponent,
-    PolicyComponent
+    PolicyComponent,
+    AddToCartComponent
   ],
   imports: [
     BrowserModule,

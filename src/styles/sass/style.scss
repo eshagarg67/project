@@ -33,17 +33,33 @@
 @import "footer";
 
  a{
-     cursor: pointer;
+      cursor: pointer;
  }
  a:active{
      color:blue;
 }
 
 img{
-    cursor: pointer;
+      cursor: pointer !important;
     width:100%;
 }
 
 body.home{
     background-color: #f4f4f4; 
+}
+
+.mat-progress-spinner{
+    position: absolute !important;
+}
+.spinner{
+    width: 100px;
+    left: 50%;
+    position: absolute;
+    height: 100px;
+    top: 50%;
+    z-index: 9999;
+}
+.link{
+    color:blue !important;
+    text-decoration:underline !important;
 }

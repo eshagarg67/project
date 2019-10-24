@@ -11,6 +11,7 @@ import { SharedService } from 'src/app/shared/services/shared.service';
 })
 export class AppHeaderComponent implements OnInit {
   categories = [];
+  toggle :number=-1;
   constructor(private router: Router, private toastr: ToastrService, private homeservice: HomeService,
     private sharedService: SharedService) { }
 
@@ -33,13 +34,11 @@ export class AppHeaderComponent implements OnInit {
 
   }
 
-  Go(id) {
-    this.router.navigate(['category', id])
-  }
-
+  
   navigate() {
     this.router.navigate([''])
   }
 
+  
 
 }

@@ -220,7 +220,7 @@
     border-radius: 27px;
     -moz-border-radius: 27px;
     box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-    cursor: pointer;
+     cursor: pointer; 
 }
 
 .irs-slider.state_hover, .irs-slider:hover {
