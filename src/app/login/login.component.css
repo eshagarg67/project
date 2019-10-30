@@ -17,6 +17,7 @@
     width: 50%;
     padding: 10px;
     outline: none;
+    margin-top:10px; 
 }
 
 .input-field:focus {
@@ -37,6 +38,7 @@ button {
     border-radius: 30px;
     margin-left: 140px;
     position: relative;
+    margin-top:15px;
 }
 
 button:hover {
@@ -65,6 +67,10 @@ h1 {
     height: 660px;
     overflow: hidden;
 }
+.signin{
+    background-color:red;
+    margin-top:35px;
+}
 
 .logo-login {
     width: 180px;
@@ -72,6 +78,7 @@ h1 {
     border: 2px solid dodgerblue;
     border-radius: 50%;
     margin-left: 155px;
+    margin-top:20px;
 }
 
 .design {

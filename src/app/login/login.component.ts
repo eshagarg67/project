@@ -58,6 +58,11 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
   }
 
+  navigate(){
+    this.router.navigate(['/signin'])
+  
+  }
+
 
 
 }

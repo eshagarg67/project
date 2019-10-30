@@ -1,0 +1,59 @@
+<div class="card">
+    <div class="card-header">
+
+            <!-- <ng-container *ngIf="!productId"> -->
+                    <div class="row">
+                            <div class="col-md-10">
+                                    <h4>Create An Account</h4>
+                            </div>
+                            <div class="col-md-2">
+                                    <button (click)="back()" class="btn btn-primary submit2">Back</button>
+                            </div>
+                    </div>
+        
+    </div>
+    <div class="form3">
+            <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+                    <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="productName"
+                                            placeholder="Enter Name" autocomplete="off" name="productName"
+                                            #productName="ngModel"
+                                            [ngClass]="{ 'is-invalid': submitted && productName.errors?.required}"
+                                            [(ngModel)]="productformmodel.productName" required />
+                                    <div class="design" *ngIf="submitted">
+                                            <div class="design" *ngIf="productName.errors?.required">Name is
+                                                    required ***</div>
+                                    </div>
+                            </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Description</label>
+                            <div class="col-sm-4">
+                                    <input type="text" autocomplete="off" class="form-control" id="productDescription"
+                                            placeholder="Create Password" name="productDescription"
+                                            #productDescription="ngModel"
+                                            [ngClass]="{ 'is-invalid': submitted && productDescription.errors?.required}"
+                                            [(ngModel)]="productformmodel.productDescription" required />
+                                    <div *ngIf="submitted">
+                                            <div class="design" *ngIf="productDescription.errors?.required">
+                                                    Description is
+                                                    required ***
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+
+                   
+
+                    <div class="row">
+                            <button type="submit" class="btn btn-primary submit1">Create</button>
+
+                            <button type="reset" (click)="reset(userForm)" class="btn btn-primary submit3">Reset</button>
+                    </div>
+            </form>
+    </div>
+</div>
