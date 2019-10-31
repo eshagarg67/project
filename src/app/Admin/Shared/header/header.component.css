@@ -56,10 +56,21 @@
 
 img {
     width: 30px;
-    height: 20px;
+    height: 30px;
 }
 
 h1 {
     color: yellow;
     font-family: cursive;
+}
+.go{
+    color:dodgerblue;
+    position:absolute;
+    left:90%;
+    top:11%;
+}
+.go:hover{
+    color:red;
+    text-decoration:underline;
+    cursor:pointer;
 }

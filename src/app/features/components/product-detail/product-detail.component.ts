@@ -57,7 +57,7 @@ export class ProductDetailComponent implements OnInit {
     this.proservice.productuser().subscribe(data => {
         if (data.statusCode === 200) {
             if (data.body !== null || data.body !== undefined) {
-              debugger;
+      
                 this.products = data.body;
             }
         } else {

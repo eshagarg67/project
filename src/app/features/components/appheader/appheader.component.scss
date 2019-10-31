@@ -7,3 +7,81 @@ h1{
     height: 80px;
     width: 90px;
 }
+
+
+
+
+.btn btn-outline-success {
+    margin-left: 20px;
+}
+
+.class1 {
+    margin-left: 40px;
+}
+
+.class2 {
+    margin-left: 40px;
+}
+
+.class3 {
+    margin-left: 40px;
+}
+
+.class4 {
+    margin-left: 40px;
+}
+
+.storage1 {
+    float: right;
+}
+
+.storage2 {
+    // display: inline-block;
+    // margin: 0;
+     position:absolute;
+     top:25%;
+     left:94%;
+}
+
+.fa-user-circle {
+    font-size: 40px;
+}
+
+#AwesomeFont {
+    color: yellow;
+}
+
+.image {
+    width: 50px;
+    height: 50px;
+    position:absolute;
+    top:10%;
+    left:98%;
+}
+.btn1{
+    position:absolute;
+    top:60%;
+    left:95%;
+}
+.cart{
+    position:absolute;
+    top:40%;
+    left:87%;
+}
+
+.count-cart{
+    position: absolute;
+    bottom: 9px;
+    right: -15px;
+    color: blue;
+    background: blue;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+
+    span{
+        color: #fff;
+        font-size: 13px;
+        padding: 0 5px 0 4px;
+    }
+}

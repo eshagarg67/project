@@ -54,7 +54,6 @@ export class AppFooterComponent implements OnInit {
    }
 
   navigate(id) {
-    debugger;
     this.router.navigate(['category', id])
   }
 }

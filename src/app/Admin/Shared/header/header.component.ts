@@ -32,4 +32,9 @@ export class HeaderComponent implements OnInit {
   dashboard(){
     this.router.navigate(["/admin/dashboard"]);
   }
+
+  navigate(){
+    this.router.navigate([''])
+  
+  }
 }

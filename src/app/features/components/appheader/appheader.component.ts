@@ -3,6 +3,7 @@ import { HomeService } from '../../../shared/services/home.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/shared/services/shared.service';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-s-header',
@@ -10,24 +11,25 @@ import { SharedService } from 'src/app/shared/services/shared.service';
   styleUrls: ['./appheader.component.scss']
 })
 export class AppHeaderComponent implements OnInit {
+  value: any = null;
+  user: any;
   categories = [];
-  updatecount:[];
-  toggle :number=-1;
-  res:any;
-  productitem:any;
+  updatecount: [];
+  toggle: number = -1;
+  cartItemsCount: any;
+  productitem: any;
   totalCount: any = 0;
-    constructor(private router: Router, private toastr: ToastrService, private homeservice: HomeService,
-    private sharedService: SharedService) { 
-      this.sharedService.updatecount$.subscribe((data) => {
-        if (data !== null && data.length > 0) {
-            this.getproductcount();
-        }
+  constructor(private router: Router, private toastr: ToastrService, private homeservice: HomeService,
+    private sharedService: SharedService) {
+    this.sharedService.updatecount$.subscribe((data) => {
+      this.cartItemsCount = data;
     });
-    }
+  }
 
   ngOnInit() {
+    this.value = localStorage.getItem('userInfo')!==null ? JSON.parse(localStorage.getItem('userInfo')): null;
     this.getcategory();
-   this.getproductcount();
+    this.sharedService.setupdatecount();
   }
   getcategory() {
     this.homeservice.categoryuser().subscribe(data => {
@@ -45,24 +47,12 @@ export class AppHeaderComponent implements OnInit {
 
   }
 
-  
+
   navigate() {
     this.router.navigate([''])
   }
 
-  getproductcount() {
-    debugger;
-      this.res= localStorage.getItem('cart');
-      debugger;
-    this.productitem=JSON.parse(this.res);
-    // for(let i = 0; i < this.productitem.length; i ++) {
-    //   if(this.productitem[i].cartId > 0) {
-    //     this.totalCount = this.productitem[i].quantity + this.totalCount
-    //     console.log(this.totalCount);
-    //   }
-    // }
+  login() {
+    this.router.navigate(['/login'])
   }
-
-  
-
 }
