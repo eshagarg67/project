@@ -14,7 +14,7 @@ export class ProductDetailComponent implements OnInit {
 
   detail: any;
   productId: any;
-  product: any;
+  product: any=null;
   categoryId: any;
   category: any;
   count: number = 1;

@@ -4,8 +4,8 @@ import { FeaturesComponent } from './features.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ProductlistbycategoryComponent } from './productlistbycategory/productlistbycategory.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-
-
+import { CartComponent } from './components/cart/cart.component';
+import { SignUpformComponent } from '../SignUp/signupform.component';
 
 
 const routes: Routes = [
@@ -29,6 +29,14 @@ const routes: Routes = [
                 path: 'product/:id',
                 component: ProductDetailComponent,
             },
+             {
+                 path: 'cartdetail',
+                component: CartComponent,
+             },
+             {
+                path: 'signup',
+                component: SignUpformComponent
+              },
         ]
     },
    

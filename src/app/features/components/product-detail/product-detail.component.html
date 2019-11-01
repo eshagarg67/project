@@ -88,9 +88,9 @@
                   <i class="ti-plus"></i
                 ></span>
               </div>
-              <div class="add_to_cart">
-                <add-to-cart [product]="product" [quantity]="count" [isWishlist]='false'></add-to-cart>
-                <add-to-cart [product]="product" [quantity]="count" [isWishlist]='true'></add-to-cart>
+              <div class="add_to_cart" *ngIf="product!==null">
+                <add-to-cart [isDetailPage]="true" [product]="product" [quantity]="count" [isWishlist]='false'></add-to-cart>
+                <add-to-cart [isDetailPage]="true" [product]="product" [quantity]="count" [isWishlist]='true'></add-to-cart>
                 
               </div>
               <div class="social_icon">
@@ -597,8 +597,7 @@
     </div>
   </div>
 </section>
-<!-- product_list part end-->
-<!-- </ng-container> -->
+
 
 <mat-progress-spinner
   [hidden]="!visible"

@@ -12,7 +12,7 @@ import { AdminComponent } from './Admin/admin.component';
 import { FormComponent } from './Admin/product/form/product_form.component';
 import { CategoryFormComponent } from './Admin/category/category-form/category-form.component';
 import { FeaturesRoutingModule } from './features/features.route';
-import { LoginformComponent } from './login/loginform/loginform.component';
+//import { SignupformComponent } from './SignUp/signupform.component';
 
 
 
@@ -57,10 +57,7 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
-  {
-    path: 'signin',
-    component: LoginformComponent
-  },
+  
   {
     path: '', redirectTo: 'login', pathMatch: 'full'
   }

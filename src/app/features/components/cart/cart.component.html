@@ -1,1 +1,35 @@
-<p>cart works!</p>
+<div class="card">
+    <div class="card-header">
+        <h1>Shopping Cart</h1>
+    </div>
+
+    <div class="card-body">
+        <table class="table table-bordered">
+
+            <tr class="tr">
+                <th>Image</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price per Unit</th>
+                <th>Price</th>
+            </tr>
+
+            <tr *ngFor="let cart of cartdetail">
+                <td>
+                    <img src="{{ 'data:image/jpg;base64,' + cart?.image }}" />
+                </td>
+                <td>{{cart.productName}}</td>
+                <td>{{cart.quantity}}</td>
+                <td>{{cart.price|currency:'INR'}}</td>
+                <td>{{cart.quantity * cart.price|currency:'INR'}}</td>
+
+            </tr>
+
+            <tr>
+                <td colspan="4"><b>Cart Total</b></td>
+                <td> {{cartTotalSum|currency:'INR'}}</td>
+            </tr>
+
+        </table>
+    </div>
+</div>

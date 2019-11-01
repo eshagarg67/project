@@ -55,4 +55,16 @@ export class AppHeaderComponent implements OnInit {
   login() {
     this.router.navigate(['/login'])
   }
+
+  view(){
+    this.router.navigate(['/cartdetail'])
+  }
+  logout(){
+    localStorage.removeItem('userInfo');
+    this.value=null;
+    this.router.navigate([""]);
+  }
+  signup(){
+    this.router.navigate(["/signup"]);
+  }
 }

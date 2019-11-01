@@ -17,10 +17,12 @@ export class AddToCartComponent {
     @Input() product = null;
     @Input() quantity = 0;
     @Input() isWishlist = false;
+    @Input() isDetailPage= false;
     constructor(private toastr: ToastrService,private router: Router, private sharedService: SharedService) {
 
     }
-    addTocart() {
+    addTocart(ev) {
+        ev.stopPropagation();
         const user = JSON.parse(localStorage.getItem('userInfo'));
         if (isNullOrUndefined(user)) {
             this.router.navigate(['login']);
@@ -36,6 +38,7 @@ export class AddToCartComponent {
                 const item = cartItems.find(x => x.productId === this.product.productId)
                 const newitem = Object.assign({}, item);
                 newitem.quantity = item.quantity + this.quantity;
+                
 
                 cartItems.splice(itemIndex, 1);
                 cartItems.push(newitem);
@@ -44,9 +47,10 @@ export class AddToCartComponent {
                     cartId: Math.floor(Math.random() * 1000),
                     userId: user.userId,
                     productId: this.product.productId,
-                    prodcutName: this.product.productName,
+                    productName: this.product.productName,
                     image: this.product.productImage,
                     quantity: this.quantity,
+                    price:this.product.price,
                     isWishlist: this.isWishlist
                 };
                 cartItems.push(cart);
@@ -54,7 +58,12 @@ export class AddToCartComponent {
             localStorage.removeItem('cart');
             localStorage.setItem('cart', JSON.stringify(cartItems));
 
-            this.toastr.success('Product Added')
+            if(this.isWishlist){
+                this.toastr.success('Product added to wishlist');
+            } else{
+                this.toastr.success('Product added to cart');
+            }
+           
             this.sharedService.setupdatecount();
         }
     }

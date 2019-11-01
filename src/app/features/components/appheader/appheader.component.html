@@ -49,16 +49,21 @@
         <button *ngIf="value === null" class="btn btn-primary" class="btn1" (click)="login()">
           login
         </button>
+        <button *ngIf="value !== null" class="btn btn-primary" class="btn1" (click)="logout()">
+            logout
+          </button>
+          <button *ngIf="value === null" class="btn btn-primary" class="btn1" (click)="signup()">
+              signup
+            </button>
 
 
         <div class="cart" class="hearer_icon d-flex">
           <div class="dropdown cart">
-            <a class="dropdown-toggle" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
+            <a href="javascript:void(0)" (click)="view()"   id="navbarDropdown3" role="button">
               <i class="ti-bag">
              
               </i>
-              <div class="count-cart">
+              <div class="count-cart" *ngIf="value !== null">
               <span>  {{ cartItemsCount }}</span>
               </div>
             </a>

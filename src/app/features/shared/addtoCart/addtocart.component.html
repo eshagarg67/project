@@ -1,3 +1,8 @@
 
-<a *ngIf="!isWishlist" class="btn_3" (click)="addTocart()">add to cart</a>
-<a *ngIf="isWishlist" class="like_us" (click)="addTocart()"> <i class="ti-heart"></i> </a>
+<a *ngIf="!isWishlist" [ngClass]="{'btn_3':isDetailPage}" (click)="addTocart($event)">
+
+    <span *ngIf="isDetailPage">add to cart</span> 
+    <span *ngIf="!isDetailPage"><i class="ti-bag"></i></span> 
+
+</a>
+<a *ngIf="isWishlist" class="like_us" (click)="addTocart($event)"> <i class="ti-heart"></i> </a>
